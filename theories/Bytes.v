@@ -37,7 +37,7 @@ Proof.
   pose proof (Nat.div_mod n 256 ltac:(lia)).
   pose proof (Nat.mod_upper_bound n 256 ltac:(lia)).
   constructor.
-  - apply Nat.div_lt_upper_bound; lia.
+  - lia.
   - constructor; [lia|constructor].
 Qed.
 

@@ -4,4 +4,4 @@
 *.glob
 *.aux
 .lia.cache
-
+.vscode/

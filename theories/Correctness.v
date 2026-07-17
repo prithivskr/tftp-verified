@@ -301,6 +301,17 @@ Example reject_unterminated_request :
   parse ([0; 1] ++ [102; 111; 111; 0] ++ mode_name Octet) = None.
 Proof. reflexivity. Qed.
 
+Example reject_empty_filename :
+  parse ([0; 1; 0] ++ mode_name Octet ++ [0]) = None.
+Proof. reflexivity. Qed.
+
+Example reject_unterminated_error :
+  parse [0; 5; 0; 1; 102; 111; 111] = None.
+Proof. reflexivity. Qed.
+
+Example reject_out_of_range_byte : parse [0; 4; 256; 0] = None.
+Proof. reflexivity. Qed.
+
 Example reject_oversized_data :
   parse ([0; 3; 0; 1] ++ repeat 42 513) = None.
 Proof. vm_compute. reflexivity. Qed.
